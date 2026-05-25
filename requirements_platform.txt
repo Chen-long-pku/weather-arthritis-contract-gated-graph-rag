@@ -1,0 +1,26 @@
+# 平台核心依赖
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+python-multipart==0.0.6
+
+# Streamlit Web界面
+streamlit==1.31.0
+streamlit-extras==0.3.6
+
+# 已有依赖（确保版本）
+neo4j==5.16.0
+openai==1.10.0
+
+# 文本处理
+jieba==0.42.1
+python-Levenshtein==0.23.0
+
+# 可视化
+plotly==5.18.0
+matplotlib==3.8.2
+seaborn==0.13.1
+
+# 工具库
+python-dotenv==1.0.0
+loguru==0.7.2
