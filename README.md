@@ -1,18 +1,26 @@
-# Contract-gated Graph-RAG for weather-sensitive arthritis
+# Auditable evidence governance for weather-sensitive arthritis Graph-RAG
 
-This repository is the code-only public snapshot for the manuscript:
+## Current code and data release: v2.0.0
 
-**Contract-gated Graph-RAG with an evidence ledger for weather-sensitive arthritis: a feasibility and clinician-adjudicated content-risk evaluation**
+The corrected, versioned code-and-data archive was published on Zenodo on 24 November 2026:
 
-The repository contains source code, evaluation scripts, extraction workflow scripts, and run documentation. It does not contain raw clinician-review workbooks, question-level adjudication datasets, internal quality-control logs, API keys, or local cache files. Aggregate tables and figures are provided with the article and Supplementary Materials.
+**[Zenodo v2.0.0: 10.5281/zenodo.24496084](https://doi.org/10.5281/zenodo.24496084)**
 
-## Manuscript scope
+Download `weather-arthritis-evidence-governance-v2.0.0-code-data.zip` from that record and follow the README and reproduction instructions inside the archive. It includes de-identified question-level records, stored retrieval contexts, model answers, clinician ratings, correction records, and analysis code supporting the revised paired evaluation. The archive contains 180 stored answers per workflow, including recorded elapsed times.
 
-The study evaluates a software method for answer-level governance in a PubMed-derived Graph-RAG prototype focused on weather-sensitive arthritis evidence. The evaluated method is a contract-gated pipeline: before generation, the system compiles an evidence contract that specifies risk tier, evidence sufficiency, forbidden actions, required answer elements, and allowed content; after generation, a verifier checks the answer against the contract and the system records a claim-level evidence ledger.
+This GitHub repository retains the earlier code snapshot. Its source tree, configuration defaults, historical documentation, and v1 tags have not been replaced by the v2.0.0 archive. Use the fixed Zenodo version for the revised analyses; do not treat the legacy GitHub defaults as a complete record of the primary-run configuration. Offline reanalysis of the retained outputs is distinct from regenerating the original model responses.
 
-This software is research infrastructure. It is not certified medical software, not a clinical decision-support system, and must not be used to diagnose, predict, treat, or adjust medication for individual patients.
+The Zenodo archive is distributed under CC BY 4.0, subject to the scope and third-party notices stated in its license files. Manuscripts, submission figures, graphical abstracts, response letters, author signatures, and private correspondence are not part of the public release.
 
-## What this repository contains
+## Study scope
+
+The study evaluates a bundled evidence-governance workflow for a PubMed-derived Graph-RAG prototype using weather-sensitive arthritis questions. It examines adjudicated answer-level content-risk outcomes, source-linked evidence records, and the trade-off with perceived usefulness. The paired comparison does not isolate the causal effect of any single workflow component. This is research software, not a validated clinical decision-support tool.
+
+## Legacy GitHub snapshot
+
+The following files and usage notes describe the earlier implementation retained in this repository. For the revised reproducibility release, use the Zenodo link above.
+
+### Files in the earlier snapshot
 
 - `arthritis_platform/services/evidence_contract.py`: evidence-contract compiler and post-generation verifier.
 - `arthritis_platform/services/rag_engine.py`: Graph-RAG orchestration for retrieval, answer generation, contract verification, and claim-ledger generation.
@@ -24,11 +32,11 @@ This software is research infrastructure. It is not certified medical software, 
 - `docs/`: installation, usage, validation, and extraction workflow notes.
 - `requirements*.txt`: dependency lists for the platform and extraction workflows.
 
-## Data availability used with this code release
+### Data availability
 
-The public release is intentionally code-only. Tables and figures are included in the article and Supplementary Materials. De-identified question-level and clinician-rating data supporting the reported analyses are available from the corresponding author upon reasonable request, subject to author approval and journal policy.
+The earlier GitHub snapshot was code-only. The updated de-identified code-and-data release is now openly available in [Zenodo v2.0.0](https://doi.org/10.5281/zenodo.24496084). This statement supersedes the request-only data-access wording in historical repository documentation.
 
-## Installation
+### Legacy installation
 
 For a quick local review, start with `RUN_ME_FIRST.md`. A typical setup is:
 
@@ -42,7 +50,7 @@ pip install -r requirements_extraction.txt
 
 If using external model calls, provide API keys through a local `.env` file. Do not commit `.env` files or API keys.
 
-## Evaluation scripts
+### Legacy evaluation scripts
 
 The paired evaluation script expects a locked question/context CSV supplied by the study team or by an authorized reproducer:
 
@@ -53,7 +61,7 @@ python evaluation/contract_gated/process_contract_gated_outputs.py --input-dir o
 
 Generated reviewer forms and analysis files should be handled according to the study's data-sharing statement and should not be committed unless public release has been approved.
 
-## Extraction quality-control workflow
+### Legacy extraction quality-control workflow
 
 The quote-first extractor anchors candidate graph relations to exact source sentences before graph insertion. It prioritizes traceability and expert-auditable candidates over automatic graph expansion.
 
@@ -65,4 +73,4 @@ Human review remains required before extracted candidates are described as curat
 
 ## Citation
 
-After publication, cite the article and the archived Zenodo/OSF code release DOI.
+For the corrected code and data, cite Zenodo version 2.0.0, DOI: [10.5281/zenodo.24496084](https://doi.org/10.5281/zenodo.24496084), using the citation metadata supplied by the record. Cite the associated article separately once published.
